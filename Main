@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+
+    ArrayList<Integer> theIntegerArray = new ArrayList<Integer>(); 
+    theIntegerArray.add(1);
+    theIntegerArray.add(158);
+    theIntegerArray.add(100);
+    theIntegerArray.add(-2700);
+    theIntegerArray.add(65);
+    theIntegerArray.add(-43);
+    theIntegerArray.add(-98);
+    System.out.println(highestNum(theIntegerArray));
+    System.out.println(getEvens(theIntegerArray));
+  
+    ArrayList<String> myWords = new ArrayList<String>();
+    String input = "";
+    while (!input.equals("STOP"))
+    {
+      System.out.println("You are in the loop, enter in a word! ");
+      input = sc.nextLine(); 
+      myWords.add(input);
+    }
+
+    myWords.remove(myWords.size()-1);
+    String thePrefix = "";
+    String theSuffix = "";
+    String theCombination = "";
+    for (int i = 0; i < myWords.size(); i++)
+    {
+      theSuffix = myWords.get(i);
+      thePrefix = myWords.get((myWords.size()-1) - i);
+      theCombination = thePrefix + theSuffix;
+      System.out.println(theCombination);
+    }
+
+
+  }
+
+  // Problem 2 - HighestNum
+  public static Integer highestNum(ArrayList<Integer> arr)
+  {
+    Integer theMaximum = Integer.MIN_VALUE;
+    for (int i = 0; i < arr.size() - 1; i++)
+    {
+      if (arr.get(i) > theMaximum)
+      {
+        theMaximum = arr.get(i);
+      }
+    }
+    return theMaximum;
+  }
+
+  // Problem 3 - getEvens
+  public static ArrayList<Integer> getEvens(final ArrayList<Integer> theIntegerArray2)
+  {
+    ArrayList<Integer> theNewArray = new ArrayList<Integer>();
+    for (int i = 0; i < theIntegerArray2.size(); i++)
+    {
+      if (theIntegerArray2.get(i)% 2 == 0 )
+      {
+        theNewArray.add(theIntegerArray2.get(i));
+      }
+    }
+    return theNewArray;
+  }
+}
